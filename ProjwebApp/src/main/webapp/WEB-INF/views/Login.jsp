@@ -8,63 +8,85 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>Login</title>
+</head>
+
+
+<body>
 
 	<!-- Contact Section -->
-<section id="container">
-	<div class="zerogrid">
-		<div class="wrap-container clearfix">
-			<div id="main-content">
-				<div class="wrap-box"><!--Start Box-->
-					
-						<div class="col-2-3">
-							<div class="wrap-col">
-								<div class="contact">
-									<div class="contact-header">
-									<center>	<h3>Login Form</h3> </center>
-									</div>
-									<div id="contact_form">
-										
-										
-										 <form name="form1" id="ff" action="<c:url value='/j_spring_security_check' />" method="post">
-                <c:if test="${not empty error}">
-                    <div class="error" style="color: #ff0000;">${error}</div>
-                </c:if>
-                 <div class="span9 center">
-                   <c:if test="${not empty msg}">
-                <div class="msg">${msg} <br><br></div>
-            </c:if>
-           
-           				<center>
-										<div>
-											<label class="row">
-												
-												<div class="row">
-													<div class="wrap-col">
-														<input type="text" name="username" id="username" placeholder="Enter username" required="required" />
-													</div>
+	<section id="register" class="bg-light-gray">
+	<div class="container">
+	
+	<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2 class="section-heading">LOgin</h2>
+				<h3 class="section-subheading text-muted">Be a member to get updates.</h3>
+			</div>
+		</div>
+	
+								<div class="row">
+									<div class="col-lg-12">
+
+									<form name="form1" id="ff"
+										action="<c:url value='/j_spring_security_check' />"
+										method="post">
+									
+										<c:if test="${not empty error}">
+											<div class="error" style="color: #ff0000;">${error}</div>
+										</c:if>
+										<div class="span9 center">
+											<c:if test="${not empty msg}">
+												<div class="msg">${msg}
+													<br>
+													<br>
 												</div>
-											</label>
+											</c:if>
+										</div>
+
+											
+											
+											<div class="row">
+											<div class="col-md-6">
+											
+											
+												<div class="form-group">
+													<input type="text" name="username" id="username" class="form-control"
+														placeholder="Enter username" required="required" />
+													
+												</div>
+
+												<div class="form-group">
+													<input type="password" name="password" id="password" class="form-control"
+														placeholder="password" required="required" />
+
+												</div>
+											
+									
+											<div class="clearfix"></div>
+												<div class="col-lg-12 text-center">
+												
+												<li><button type="submit" class="btn btn-xl" value="Submit">Login</button></li>
+					
+											
+												</div>	
+													
+												</div>	
 											</div>
 											
-											<div>
-											<label class="row">
-												<div class="wrap-col">
-													<input type="password" name="password" id="password" placeholder="password" required="required" />
-												</div>
-											</label>
-											</div>
-								</center>			
-											<center><input class="sendButton" type="submit" name="Submit" value="Submit"></center>
+
+											<input type="hidden" name="${_csrf.parameterName}"
+												value="${_csrf.token}" />
 									
-									   
-										 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-										</form>
-									</div>
+								
+								</form>
 								</div>
+								</div>
+								
 							</div>
-						</div>
-						
- </section>
+					
+	
+	</section>
 
 
 
@@ -100,4 +122,14 @@
 </html>
 
 
- <%@include file="/WEB-INF/views/Footers.jsp" %>
+<%@include file="/WEB-INF/views/Footers.jsp"%>
+
+
+
+
+
+
+
+
+
+

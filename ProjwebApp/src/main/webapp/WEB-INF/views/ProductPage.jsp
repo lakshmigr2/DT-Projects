@@ -53,13 +53,17 @@
 <body>
 
 
+<div>
 <ul>
 <li><a  href="manageCategory">Manage Category</a></li>
 <li><a  href="manageSupplier">Manage Supplier</a></li>
 <li><a  href="manageProduct">Manage Product</a></li>
 </ul>
+</div>
 
-	<h4>Add a Product</h4>
+
+
+	<h1>Add a Product</h1>
 
 	<%--  <form method="POST" action="uploadFile" enctype="multipart/form-data">
 		<table>
@@ -79,7 +83,7 @@
 
 	<c:url var="addAction" value="/manageProduct/add"></c:url>
 
-	<form:form action="${addAction}" commandName="product">
+	<form:form action="${addAction}" commandName="product" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td><form:label path="id">
@@ -93,7 +97,7 @@
 
 					<c:otherwise>
 						<td><form:input path="id" pattern=".{6,7}" required="true"
-								title="id should contains 6 to 7 characters" /></td>
+								title="id should contains 6 to 7 characters" class="form-control" /></td>
 					</c:otherwise>
 				</c:choose>
 			<tr>
@@ -101,7 +105,7 @@
 				<td><form:label path="name">
 						<spring:message text="Name" />
 					</form:label></td>
-				<td><form:input path="name" required="true" /></td>
+				<td><form:input path="name" required="true" class="form-control" /></td>
 			</tr>
 
 
@@ -109,33 +113,39 @@
 				<td><form:label path="price">
 						<spring:message text="Price" />
 					</form:label></td>
-				<td><form:input path="price" required="true" /></td>
+				<td><form:input path="price" required="true" class="form-control" /></td>
 			</tr>
 
 			<tr>
 				<td><form:label path="description">
 						<spring:message text="Description" />
 					</form:label></td>
-				<td><form:input path="description" required="true" /></td>
+				<td><form:input path="description" required="true" class="form-control"/></td>
 			</tr>
 
-			
 			<tr>
 				<td><form:label path="supplier">
 						<spring:message text="Supplier" />
 					</form:label></td>
 				<td><form:select path="supplier.name" items="${supplierList}"
-						itemValue="name" itemLabel="name" /></td>
+						itemValue="name" itemLabel="name" class="form-control"/></td>
 			</tr>
 			<tr>
 				<td><form:label path="category">
 						<spring:message text="Category" />
 					</form:label></td>
 				<td><form:select path="category.name" items="${categoryList}"
-						itemValue="name" itemLabel="name" /></td>
+						itemValue="name" itemLabel="name" class="form-control"/></td>
 			</tr>
+			<tr>
+			<td>
+			Upload Picture
+			</td>
+			<td>
+			<form:input id="itemimage" path="itemImage" type="file" class="form:input-large" />
+			</td>
 			
-			
+			</tr>
 			<tr>
 				<td colspan="2"><c:if test="${!empty product.name}">
 						<input type="submit" value="<spring:message text="Edit Product"/>" />
@@ -172,9 +182,11 @@
 					<td>${product.supplier.name}</td>
 					<td><a href="<c:url value='manageProduct/edit/${product.id}' />">Edit</a></td>
 					<td><a href="<c:url value='manageProduct/remove/${product.id}' />">Delete</a></td>
+					<td><img src="<c:url value="/resources/img/${product.id}.png" /> " alt="image"/>? </td>
 				</tr>
 			</c:forEach>
 		</table>
 	</c:if>
 </body>
 </html>
+

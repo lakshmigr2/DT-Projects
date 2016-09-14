@@ -1,4 +1,12 @@
 package com.niit.shoppingcart;
+
+
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.niit.shopingcart.dao.CategoryDAO;
 import com.niit.shopingcart.dao.ProductDAO;
@@ -14,6 +23,8 @@ import com.niit.shopingcart.dao.SupplierDAO;
 import com.niit.shopingcart.model.Category;
 import com.niit.shopingcart.model.Product;
 import com.niit.shopingcart.model.Supplier;
+import com.niit.util.Util;
+
 
 @Controller
 public class ProductController {
@@ -26,6 +37,7 @@ public class ProductController {
 
 	@Autowired(required = true)
 	private SupplierDAO supplierDAO;
+	private Path path;
 
 	/*
 	 * @Autowired(required=true)
@@ -48,8 +60,9 @@ public class ProductController {
 
 	// For add and update product both
 	@RequestMapping(value = "/manageProduct/add", method = RequestMethod.POST)
-	public String addProduct(@ModelAttribute("product") Product product,Model model) {
+	public String addProduct(@ModelAttribute("product") Product product,Model model,HttpServletRequest request) {
 
+		
 		Category category = categoryDAO.getByName(product.getCategory().getName());
 		categoryDAO.saveOrUpdate(category);
 
@@ -60,13 +73,31 @@ public class ProductController {
 		model.addAttribute("supplierList", this.supplierDAO.list());
 		model.addAttribute("categoryList", this.categoryDAO.list());
 
-		
-		product.setCategory(category);
-		product.setSupplier(supplier);		
+				
 		product.setCategory_id(category.getId());
 		product.setSupplier_id(supplier.getId());
+		product.setCategory(category);
+		product.setSupplier(supplier);
 		
-		productDAO.saveOrUpdate(product);
+		String newID=Util.removeComma(product.getId());
+		product.setId(newID);
+		
+				productDAO.saveOrUpdate(product);
+
+		        MultipartFile itemImage = product.getItemImage();
+		        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+		        path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\img\\"+product.getId()+".png");
+
+
+		        if (itemImage != null && !itemImage.isEmpty()) {
+		            try {
+		            itemImage.transferTo(new File(path.toString()));
+		            } catch (Exception e) {
+		                e.printStackTrace();
+		                throw new RuntimeException("item image saving failed.", e);
+		            }
+		        }
+
 
 		return "redirect:/manageProduct";
 
@@ -103,4 +134,3 @@ public class ProductController {
 
 
 }
-

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.niit.shopingcart.dao.CategoryDAO;
 import com.niit.shopingcart.model.Category;
+import com.niit.util.Util;
 
 
 
@@ -37,7 +38,10 @@ public class CategoryController {
 	@RequestMapping(value= "/manageCategory/add", method = RequestMethod.POST)
 	public String addCategory(@ModelAttribute("category") Category category){
 		
-	
+		String newID=Util.removeComma(category.getId());
+		category.setId(newID);
+		
+		
 			categoryDAO.saveOrUpdate(category);
 		
 		return "redirect:/manageCategory";

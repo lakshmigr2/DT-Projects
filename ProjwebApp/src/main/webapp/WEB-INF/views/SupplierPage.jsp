@@ -10,6 +10,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page session="false"%>
+
+
 <html>
 <head>
 <title>Supplier Page</title>
@@ -50,6 +52,13 @@
 .tg .tg-4eph {
 	background-color: #f9f9f9
 }
+
+
+body {
+     background-image: url('..resources/img/bg.jpg');                        
+ 
+}
+
 </style>
 </head>
 <body>
@@ -78,7 +87,7 @@
 					</c:when>
 
 					<c:otherwise>
-						<td><form:input path="id" patttern =".{6,7}" required="true" title="id should contains 6 to 7 characters" /></td>
+						<td><form:input path="id" patttern =".{6,7}" required="true" title="id should contains 6 to 7 characters" class="form-control" /></td>
 					</c:otherwise>
 				</c:choose>
 			<tr>
@@ -86,13 +95,13 @@
 				<td><form:label path="name">
 						<spring:message text="Name" />
 					</form:label></td>
-				<td><form:input path="name" required="true" /></td>
+				<td><form:input path="name" required="true" class="form-control" /></td>
 			</tr>
 			<tr>
 				<td><form:label path="address">
 						<spring:message text="Address" />
 					</form:label></td>
-				<td><form:input path="address" required="true" /></td>
+				<td><form:input path="address" required="true" class="form-control" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><c:if test="${!empty supplier.name}">
