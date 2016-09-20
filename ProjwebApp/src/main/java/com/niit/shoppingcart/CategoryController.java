@@ -18,8 +18,11 @@ import com.niit.util.Util;
 
 @Controller
 public class CategoryController {
+	@Autowired
 	
 	private CategoryDAO categoryDAO;
+	@Autowired
+	private Category category;
 	
 	@Autowired(required=true)
 	@Qualifier(value="categoryDAO")
@@ -27,10 +30,24 @@ public class CategoryController {
 		this.categoryDAO = ps;
 	}
 	
+	
+	@RequestMapping(value = "/onLoad", method = RequestMethod.GET)
+	public String onLoad(Model model) {
+		System.out.println("onLoad");
+		model.addAttribute("category", new Category());
+		model.addAttribute("categoryList", this.categoryDAO.list());
+		
+		return "/Index";
+	}
+	
+	
 	@RequestMapping(value = "/manageCategory", method = RequestMethod.GET)
+	
+	
 	public String listCategorys(Model model) {
 		model.addAttribute("category", new Category());
 		model.addAttribute("categoryList", this.categoryDAO.list());
+		
 		return "CategoryPage";
 	}
 	

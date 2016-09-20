@@ -123,35 +123,13 @@
 </ul>			
 </div>
 
-
 </section>
-
-
-	<script src="<c:url value="resources/js/jquery-latest.min.js"/>">
-		
-	</script>
-
-	<!-- jQuery -->
-	<script src="<c:url value="resources/vendor/jquery/jquery.min.js"/>">
-		
-	</script>
-
-	<!-- Bootstrap Core JavaScript -->
-	<script
-		src="<c:url value="resources/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
-
-	<!-- Plugin JavaScript -->
-	<script
-		src="<c:url value="resources/http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"/>"></script>
-
-	<!-- Contact Form JavaScript -->
-	<script src="<c:url value="resources/js/jqBootstrapValidation.js"/>"></script>
-	<script src="<c:url value="resources/js/contact_me.js"/>"></script>
-
-	<!-- Theme JavaScript -->
-	<script src="<c:url value="resources/js/agency.min.js"/>"></script>
-
-
 </body>
 </html>
+
+
+
+
+
+
 

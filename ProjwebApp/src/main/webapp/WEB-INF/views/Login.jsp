@@ -25,6 +25,7 @@
 			</div>
 		</div>
 	
+					
 								<div class="row">
 									<div class="col-lg-12">
 
@@ -45,36 +46,36 @@
 										</div>
 
 											
-											
+										
 											<div class="row">
 											<div class="col-md-6">
 											
+								
 											
 												<div class="form-group">
 													<input type="text" name="username" id="username" class="form-control"
 														placeholder="Enter username" required="required" />
-													
 												</div>
-
+									
 												<div class="form-group">
 													<input type="password" name="password" id="password" class="form-control"
 														placeholder="password" required="required" />
-
 												</div>
 											
+										
 									
 											<div class="clearfix"></div>
 												<div class="col-lg-12 text-center">
 												
-												<li><button type="submit" class="btn btn-xl" value="Submit">Login</button></li>
+												<button type="submit" class="btn btn-xl" value="Submit">Login</button>
 					
-											
 												</div>	
+								
 													
 												</div>	
 											</div>
 											
-
+								
 											<input type="hidden" name="${_csrf.parameterName}"
 												value="${_csrf.token}" />
 									
@@ -83,6 +84,7 @@
 								</div>
 								</div>
 								
+					
 							</div>
 					
 	

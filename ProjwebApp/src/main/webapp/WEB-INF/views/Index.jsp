@@ -8,6 +8,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
+
+
 <title>Camera to Capture The WOrld</title>
 
 
@@ -48,6 +50,160 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
+
+ <!--  <meta http-equiv="refresh" content="0; URL=./onLoad" /> -->
+<%-- <spring:url value="/resources/menu.css" var="menuCSS" />
+<link href="${menuCSS}" rel="stylesheet" />
+ --%>
+<style>
+
+#head{
+color:blue
+}
+/* Main */
+#menu {
+	width: 100%;
+	margin: 0;
+	padding: 10px 0 0 0;
+	list-style: none;
+	background-color: #fed136;
+	background-image: linear-gradient(#00000444, #00000111);
+	border-radius: 50px;
+	box-shadow: 0 2px 1px #009c9c9c;
+}
+
+#menu li {
+	float: left;
+	padding: 0 0 10px 0;
+	position: relative;
+}
+
+#menu a {
+	float: left;
+	height: 25px;
+	padding: 0 25px;
+	color: #fff;
+	text-transform: uppercase;
+	font: bold 12px/25px Arial, Helvetica;
+	text-decoration: none;
+	text-shadow: 0 1px 0 #000;
+}
+
+#menu li:hover>a {
+	color: #fed136;
+	
+}
+
+* html #menu li a:hover { /* IE6 */
+	color: #fafafa;
+}
+
+#menu li:hover>ul {
+	display: block;
+}
+
+/* Sub-menu */
+#menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: none;
+	position: absolute;
+	top: 35px;
+	left: 0;
+	z-index: 99999;
+	background-color: #444;
+	background-image: linear-gradient(#444, #111);
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#menu ul li {
+	float: none;
+	margin: 0;
+	padding: 0;
+	display: block;
+	box-shadow: 0 1px 0 #111111, 0 2px 0 #777777;
+}
+
+#menu ul li:last-child {
+	box-shadow: none;
+}
+
+#menu ul a {
+	padding: 10px;
+	height: auto;
+	
+	line-height: 1;
+	display: block;
+	white-space: nowrap;
+	float: none;
+	text-transform: none;
+}
+
+* html #menu ul a { /* IE6 */
+	height: 10px;
+	width: 150px;
+}
+
+*:first-child+html #menu ul a { /* IE7 */
+	height: 10px;
+	width: 150px;
+}
+
+#menu ul a:hover {
+	background-color: #0186ba;
+	background-image: linear-gradient(#04acec, #0186ba);
+}
+
+#menu ul li:first-child a {
+	color: #EACD5A;
+	
+	border-radius: 5px 5px 0 0;
+}
+
+#menu ul li:first-child a:after {
+	content: '';
+	position: absolute;
+	left: 30px;
+	top: -8px;
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 8px solid #444;
+}
+
+#menu ul li:first-child a:hover:after {
+	border-bottom-color: #04acec;
+}
+
+#menu ul li:last-child a {
+	border-radius: 0 0 5px 5px;
+}
+
+/* Clear floated elements */
+#menu:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+* html #menu {
+	zoom: 1;
+} /* IE6 */
+*:first-child+html #menu {
+	zoom: 1;
+} /* IE7 */
+</style>
+
+
+
+
 </head>
 
 <body id="page-top" class="index">
@@ -73,10 +229,11 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="hidden"><a href="#page-top"></a></li>
 				<li><a class="page-scroll" href="#services">Services</a></li>
-				<li><a class="page-scroll" href="#portfolio">products</a></li>
 				<li><a class="page-scroll" href="#about">About</a></li>
 				<li><a href="register">Register</a></li>
 				<li><a href="loginPage">login</a></li>
+
+
 
 
 
@@ -95,21 +252,79 @@
 
 			</ul>
 		</div>
+		
+		
+		
 		<!-- /.navbar-collapse -->
 	</div>
-	<!-- /.container-fluid --> </nav>
+		<!-- /.container-fluid --> </nav>
 
-	<!-- Header -->
+
+<!-- Header -->
 	<header>
+	
 	<div class="container">
 		<div class="intro-text">
+
 			<div class="intro-lead-in">Welcome To Our Studio!</div>
 			<div class="intro-heading">Capture the Moments to make it
 				Memorable</div>
 			<a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
 		</div>
+		
+		
+	
+		
 	</div>
 	</header>
+
+		
+<div>
+<ul id="menu">
+		<c:forEach items="${categoryList}" var="category">
+			<li><a href=${category.name}>${category.name}</a>
+				<ul>
+					<c:forEach items="${category.products}" var="product">
+
+						<li><a href="<c:url value='product/get/${product.id}' />">${product.name}</a></li>
+
+					</c:forEach>
+
+				</ul></li>
+		</c:forEach>
+
+	</ul>
+	<hr color="#fff" size="5">
+	
+	<div>
+		<c:if test="${!empty selectedProduct.name}">
+		
+			<table>
+				<tr>
+					<th align="left" width="80">Product ID</th>
+					<th align="left" width="120">Product Name</th>
+					<th align="left" width="200">Product Description</th>
+					<th align="left" width="80">Price</th>
+					<th align="left" width="200">Product Category</th>
+					<th align="left" width="200">Product Supplier</th>
+					
+				</tr>
+				<tr>
+					<td align="left" >${selectedProduct.id}</td>
+					<td align="left" >${selectedProduct.name}</td>
+					<td align="left" >${selectedProduct.description}</td>
+					<td align="left" >${selectedProduct.price}</td>
+					<td align="left" >${selectedProduct.category.name}</td>
+					<td align="left" >${selectedProduct.supplier.name}</td>
+				</tr>
+			</table>
+			
+		</c:if>
+	</div>
+	<%@include file="/WEB-INF/views/FetchProducts.jsp"%>
+	
+</div>	
+
 
 	<!-- Services Section -->
 	<section id="services">
@@ -156,108 +371,6 @@
 	</div>
 	</section>
 
-	<!-- Portfolio Grid Section -->
-	<section id="portfolio" class="bg-light-gray">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 text-center">
-				<h2 class="section-heading">Products</h2>
-				<h3 class="section-subheading text-muted">Our products your
-					choice.</h3>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4 col-sm-6 portfolio-item">
-				<a href="#portfolioModal1" class="portfolio-link"
-					data-toggle="modal">
-					<div class="portfolio-hover">
-						<div class="portfolio-hover-content">
-							<i class="fa fa-plus fa-3x"></i>
-						</div>
-					</div> ​ <img class="img-responsive" alt=""
-					src="<c:url value="resources/img/portfolio/roundicons.gif" />"></img>
-				</a>
-				<div class="portfolio-caption">
-					<h4>Nikon</h4>
-					<p class="text-muted">Cameras</p>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-6 portfolio-item">
-				<a href="#portfolioModal2" class="portfolio-link"
-					data-toggle="modal">
-					<div class="portfolio-hover">
-						<div class="portfolio-hover-content">
-							<i class="fa fa-plus fa-3x"></i>
-						</div>
-					</div> <img class="img-responsive" alt=""
-					src="<c:url value="resources/img/portfolio/startup-framework.gif" />"></img>
-
-				</a>
-				<div class="portfolio-caption">
-					<h4>Cannon</h4>
-					<p class="text-muted">Cameras</p>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-6 portfolio-item">
-				<a href="#portfolioModal3" class="portfolio-link"
-					data-toggle="modal">
-					<div class="portfolio-hover">
-						<div class="portfolio-hover-content">
-							<i class="fa fa-plus fa-3x"></i>
-						</div>
-					</div> <img class="img-responsive" alt=""
-					src="<c:url value="resources/img/portfolio/treehouse.gif" />"></img>
-				</a>
-				<div class="portfolio-caption">
-					<h4>Sony</h4>
-					<p class="text-muted">Cameras</p>
-				</div>
-			</div>
-			<!--  <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/golden.png" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Nikon</h4>
-                        <p class="text-muted">Accessories</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/escape.png" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Cannon</h4>
-                        <p class="text-muted">Accessories</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/dreams.png" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Sony</h4>
-                        <p class="text-muted">Accessories</p>
-                    </div>
-                </div> -->
-		</div>
-	</div>
-	</section>
 
 	<!-- About Section -->
 	<section id="about">
@@ -275,7 +388,7 @@
 					<li>
 						<div class="timeline-image">
 							<img class="img-responsive" alt=""
-								src="<c:url value="resources/img/about/1.jpg" />"></img>
+								src="<c:url value="/resources/img/about/1.jpg" />"></img>
 
 						</div>
 						<div class="timeline-panel">
@@ -294,7 +407,7 @@
 					<li class="timeline-inverted">
 						<div class="timeline-image">
 							<img class="img-circle img-responsive" alt=""
-								src="<c:url value="resources/img/about/2.jpg" />"></img>
+								src="<c:url value="/resources/img/about/2.jpg" />"></img>
 
 						</div>
 						<div class="timeline-panel">
@@ -313,7 +426,7 @@
 					<li>
 						<div class="timeline-image">
 							<img class="img-circle img-responsive" alt=""
-								src="<c:url value="resources/img/about/3.jpg" />"></img>
+								src="<c:url value="/resources/img/about/3.jpg" />"></img>
 
 
 						</div>
@@ -333,7 +446,7 @@
 					<li class="timeline-inverted">
 						<div class="timeline-image">
 							<img class="img-circle img-responsive" alt=""
-								src="<c:url value="resources/img/about/4.jpg" />"></img>
+								src="<c:url value="/resources/img/about/4.jpg" />"></img>
 						</div>
 						<div class="timeline-panel">
 							<div class="timeline-heading">
@@ -425,31 +538,31 @@
         </div>
     </section>
  -->
-	<!-- Clients Aside -->
+<%-- 	<!-- Clients Aside -->
 	<aside class="clients">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3 col-sm-6">
 				<a href="#"> <img class="img-responsive img-centered" alt=""
-					src="<c:url value="resources/img/logos/envato.jpg" />"></img>
+					src="<c:url value="/resources/img/logos/envato.jpg" />"></img>
 
 				</a>
 			</div>
 			<div class="col-md-3 col-sm-6">
 				<a href="#"> <img class="img-responsive img-centered" alt=""
-					src="<c:url value="resources/img/logos/designmodo.jpg" />"></img>
+					src="<c:url value="/resources/img/logos/designmodo.jpg" />"></img>
 
 				</a>
 			</div>
 			<div class="col-md-3 col-sm-6">
 				<a href="#"> <img class="img-responsive img-centered" alt=""
-					src="<c:url value="resources/img/logos/themeforest.jpg" />"></img>
+					src="<c:url value="/resources/img/logos/themeforest.jpg" />"></img>
 
 				</a>
 			</div>
 			<div class="col-md-3 col-sm-6">
 				<a href="#"> <img class="img-responsive img-centered" alt=""
-					src="<c:url value="resources/img/logos/creative-market.jpg" />"></img>
+					src="<c:url value="/resources/img/logos/creative-market.jpg" />"></img>
 
 				</a>
 			</div>
@@ -457,7 +570,7 @@
 	</div>
 	</aside>
 
-
+ --%>
 
 
 
@@ -509,7 +622,7 @@
 								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
 									consectetur.</p>
 								<img class="img-responsive img-centered" alt=""
-									src="<c:url value="resources/img/portfolio/roundicons-free.png" />"></img>
+									src="<c:url value="/resources/img/portfolio/roundicons-free.png" />"></img>
 
 								<p>Use this area to describe your project. Lorem ipsum dolor
 									sit amet, consectetur adipisicing elit. Est blanditiis dolorem
@@ -559,7 +672,7 @@
 									consectetur.</p>
 
 								<img class="img-responsive img-centered" alt=""
-									src="<c:url value="resources/img/portfolio/startup-framework-preview.png" />"></img>
+									src="<c:url value="/resources/img/portfolio/startup-framework-preview.png" />"></img>
 								<p>
 									<a href="http://designmodo.com/startup/?u=787">Startup
 										Framework</a> is a website builder for professionals. Startup
@@ -605,7 +718,7 @@
 								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
 									consectetur.</p>
 								<img class="img-responsive img-centered" alt=""
-									src="<c:url value="resources/img/portfolio/treehouse-preview.png" />"></img>
+									src="<c:url value="/resources/img/portfolio/treehouse-preview.png" />"></img>
 
 								<p>
 									Treehouse is a free PSD web template built by <a
@@ -650,7 +763,7 @@
 								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
 									consectetur.</p>
 								<img class="img-responsive img-centered" alt=""
-									src="<c:url value="resources/img/portfolio/golden-preview.png" />"></img>
+									src="<c:url value="/resources/img/portfolio/golden-preview.png" />"></img>
 
 
 								<p>
@@ -698,7 +811,7 @@
 								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
 									consectetur.</p>
 								<img class="img-responsive img-centered" alt=""
-									src="<c:url value="resources/img/portfolio/escape-preview.png" />"></img>
+									src="<c:url value="/resources/img/portfolio/escape-preview.png" />"></img>
 
 
 								<p>
@@ -745,7 +858,7 @@
 								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
 									consectetur.</p>
 								<img class="img-responsive img-centered" alt=""
-									src="<c:url value="resources/img/portfolio/dreams-preview.png" />"></img>
+									src="<c:url value="/resources/img/portfolio/dreams-preview.png" />"></img>
 
 								<p>
 									Dreams is a free PSD web template built by <a
@@ -772,29 +885,29 @@
 	</div>
 
 
-	<script src="<c:url value="resources/js/jquery-latest.min.js"/>">
+	<script src="<c:url value="/resources/js/jquery-latest.min.js"/>">
 		
 	</script>
 
 	<!-- jQuery -->
-	<script src="<c:url value="resources/vendor/jquery/jquery.min.js"/>">
+	<script src="<c:url value="/resources/vendor/jquery/jquery.min.js"/>">
 		
 	</script>
 
 	<!-- Bootstrap Core JavaScript -->
 	<script
-		src="<c:url value="resources/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
+		src="<c:url value="/resources/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
 
 	<!-- Plugin JavaScript -->
 	<script
-		src="<c:url value="resources/http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"/>"></script>
+		src="<c:url value="/resources/http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"/>"></script>
 
 	<!-- Contact Form JavaScript -->
-	<script src="<c:url value="resources/js/jqBootstrapValidation.js"/>"></script>
-	<script src="<c:url value="resources/js/contact_me.js"/>"></script>
+	<script src="<c:url value="/resources/js/jqBootstrapValidation.js"/>"></script>
+	<script src="<c:url value="/resources/js/contact_me.js"/>"></script>
 
 	<!-- Theme JavaScript -->
-	<script src="<c:url value="resources/js/agency.min.js"/>"></script>
+	<script src="<c:url value="/resources/js/agency.min.js"/>"></script>
 
 </body>
 

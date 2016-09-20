@@ -18,9 +18,6 @@
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<ul class="nav navbar-nav navbar-right">
 		<li class="hidden"><a href="#page-top"></a></li>
-		<li><a href="#services">Services</a></li>
-		<li><a class="page-scroll" href="#portfolio">products</a></li>
-		<li><a class="page-scroll" href="#about">About</a></li>
 		<li><a href="register">Register</a></li>
 		<li><a href="loginPage">Login</a></li>
 	</ul>

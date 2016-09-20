@@ -115,6 +115,7 @@
 
 	<c:url var="addAction" value="/manageCategory/add"></c:url>
 
+
 <div class="row">
 	<div class="col-lg-12">
 

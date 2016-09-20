@@ -4,13 +4,15 @@
 <%@include file="/WEB-INF/views/Headers.jsp"%>
 
 
+
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@ page session="false"%>
 <html>
 <head>
-<title>Product Page</title>
+<title>Category Page</title>
 <style type="text/css">
 .tg {
 	border-collapse: collapse;
@@ -49,6 +51,45 @@
 	background-color: #f9f9f9
 }
 </style>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<title>Camera to Capture The WOrld</title>
+
+
+
+
+
+
+<!-- Bootstrap Core CSS -->
+<link
+	href="<c:url value="/resources/vendor/bootstrap/css/bootstrap.min.css"/>"
+	rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link
+	href="<c:url value="/resources/vendor/font-awesome/css/font-awesome.min.css"/>"
+	rel="stylesheet" type="text/css">
+<link
+	href="<c:url value="/resources/https://fonts.googleapis.com/css?family=Montserrat:400,700"/>"
+	rel="stylesheet" type="text/css">
+<link
+	href="<c:url value="/resources/https://fonts.googleapis.com/css?family=Kaushan+Script"/>"
+	rel='stylesheet' type='text/css'>
+<link
+	href="<c:url value="/resources/https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic"/>"
+	rel='stylesheet' type='text/css'>
+<link
+	href="<c:url value="/resources/https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"/>"
+	rel='stylesheet' type='text/css'>
+
+<!-- Theme CSS -->
+<link href="<c:url value="/resources/css/agency.min.css"/>"
+	rel="stylesheet">
+
+
+
 </head>
 <body>
 
@@ -182,11 +223,10 @@
 					<td>${product.supplier.name}</td>
 					<td><a href="<c:url value='manageProduct/edit/${product.id}' />">Edit</a></td>
 					<td><a href="<c:url value='manageProduct/remove/${product.id}' />">Delete</a></td>
-					<td><img src="<c:url value="/resources/img/${product.id}.png" /> " alt="image"/>? </td>
+					<td><img src="<c:url value="/resources/images/${product.id}.png" /> " alt="image"/>​ </td>
 				</tr>
 			</c:forEach>
 		</table>
 	</c:if>
 </body>
 </html>
-
