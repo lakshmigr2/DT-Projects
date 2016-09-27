@@ -82,10 +82,7 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="hidden"><a href="#page-top"></a></li>
-				<li><a href="register">Register</a></li>
-				<li><a href="loginPage">login</a></li>
-
-
+	
 
 				<c:if test="${pageContext.request.userPrincipal.name != null}">
 					<c:if test="${pageContext.request.userPrincipal.name != 'admin'}">
@@ -93,7 +90,7 @@
 					</c:if>
 					<c:if test="${pageContext.request.userPrincipal.name  == 'admin'}">
 						<a href="<c:url value="/admin" />">View Inventory</a>
-						<a href="<c:url value="/" />">View Customer</a>
+						<%-- <a href="<c:url value="/" />">View Customer</a> --%>
 					</c:if>
 					<a>Hello, ${pageContext.request.userPrincipal.name}</a>
 					<a href="<c:url value="/j_spring_security_logout" />">Sign Out</a>

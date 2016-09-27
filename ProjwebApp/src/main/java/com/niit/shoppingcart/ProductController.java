@@ -2,6 +2,8 @@ package com.niit.shoppingcart;
 
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -25,6 +27,7 @@ import com.niit.shopingcart.model.Category;
 import com.niit.shopingcart.model.Product;
 import com.niit.shopingcart.model.Supplier;
 import com.niit.util.Util;
+
 
 @Controller
 public class ProductController {
@@ -81,41 +84,66 @@ public class ProductController {
 		
 		String newID=Util.removeComma(product.getId());
 		product.setId(newID);
+			
+
 		productDAO.saveOrUpdate(product);
-
-		      MultipartFile itemImage = product.getItemImage();
-		      String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-		      path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\img\\"+product.getId()+".png");
-		       //path = Paths.get("G:\\project backups\\10 sept login\\ProjwebApp\\src\\main\\webapp\\WEB-INF\\resources\\images\\"+product.getId()+".png");
-		        
-
-
-		        if (itemImage != null && !itemImage.isEmpty()) {
-		            try {
-		            itemImage.transferTo(new File(path.toString()));
-		            } catch (Exception e) {
-		                e.printStackTrace();
-		                throw new RuntimeException("item image saving failed.", e);
-		            }
-		        }
+		   MultipartFile itemImage = product.getItemImage();
+	       String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images\\"+product.getId()+".png");
+//  path = Paths.get("E:\\workspace2\\ShoppingCartFrontEnd\\src\\main\\webapp\\WEB-INF\\resources\\images"+product.getId()+".png");
+	        
 
 
-		return "redirect:/manageProduct";
+	        if (itemImage != null && !itemImage.isEmpty()) {
+	            try {
+	            itemImage.transferTo(new File(path.toString()));
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	                throw new RuntimeException("item image saving failed.", e);
+	            }
+	        }
 
-	}
 
+	return "redirect:/manageProduct";
+
+}
 	@RequestMapping("manageProduct/remove/{id}")
 	public String removeProduct(@PathVariable("id") String id, ModelMap model) throws Exception {
 
 		try {
 			productDAO.delete(id);
-			model.addAttribute("message", "Successfully Removed");
+			model.addAttribute("message", "Successfully Added");
 		} catch (Exception e) {
 			model.addAttribute("message", e.getMessage());
 			e.printStackTrace();
 		}
 		// redirectAttrs.addFlashAttribute(arg0, arg1)
 		return "redirect:/manageProduct";
+/*
+		try {
+			productDAO.delete(id);
+			model.addAttribute("message", "Successfully deleted");
+		} catch (Exception e) {
+			model.addAttribute("message", e.getMessage());
+			e.printStackTrace();
+		}
+		
+		
+		path = Paths.get("D:\\DT softwares\\New folder\\WORKSPACE\\ShoppingCartFrontEnd\\src\\main\\webapp\\WEB-IN\\resources\\images\\" + id + ".png");
+		
+		if (Files.exists(path)) {
+            try {
+                Files.delete(path);
+                System.out.println("Image successfully deleted");
+            } catch (IOException e) {
+            	  System.out.println("Error in Image deletion");
+                e.printStackTrace();
+            }
+        }
+		// redirectAttrs.addFlashAttribute(arg0, arg1)
+		return "redirect:/manageProduct";
+*/		
+	
 	}
 
 	@RequestMapping("manageProduct/edit/{id}")
@@ -132,6 +160,7 @@ public class ProductController {
 		return "ProductPage";
 
 	}
+
 	@RequestMapping("product/get/{id}")
 	public String getSelectedProduct(@PathVariable("id") String id, Model model,RedirectAttributes redirectattributes) {
 		System.out.println("getSelectedProduct");
@@ -141,9 +170,9 @@ public class ProductController {
 		redirectattributes.addFlashAttribute("selectedProduct", this.productDAO.get(id));
 	
 		return "redirect:/";
-		
+	
 	}
 
-
+	
+	
 }
-

@@ -56,6 +56,8 @@
 <%-- <spring:url value="/resources/menu.css" var="menuCSS" />
 <link href="${menuCSS}" rel="stylesheet" />
  --%>
+
+
 <style>
 
 #head{
@@ -202,8 +204,6 @@ color:blue
 </style>
 
 
-
-
 </head>
 
 <body id="page-top" class="index">
@@ -228,7 +228,11 @@ color:blue
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="hidden"><a href="#page-top"></a></li>
+				
+				<li><a class="page-scroll" href="#portfolio">Products</a></li>
+				
 				<li><a class="page-scroll" href="#services">Services</a></li>
+				
 				<li><a class="page-scroll" href="#about">About</a></li>
 				<li><a href="register">Register</a></li>
 				<li><a href="loginPage">login</a></li>
@@ -239,11 +243,11 @@ color:blue
 
 				<c:if test="${pageContext.request.userPrincipal.name != null}">
 					<c:if test="${pageContext.request.userPrincipal.name != 'admin'}">
-						<a href="<c:url value="/" />">Cart</a>
+						<a href="<c:url value="/myCart" />">Cart</a>
 					</c:if>
 					<c:if test="${pageContext.request.userPrincipal.name  == 'admin'}">
 						<a href="<c:url value="/admin" />">View Inventory</a>
-						<a href="<c:url value="/" />">View Customer</a>
+						<%-- <a href="<c:url value="/" />">View Customer</a> --%>
 					</c:if>
 					<a>Hello, ${pageContext.request.userPrincipal.name}</a>
 					<a href="<c:url value="/j_spring_security_logout" />">Sign Out</a>
@@ -269,7 +273,7 @@ color:blue
 			<div class="intro-lead-in">Welcome To Our Studio!</div>
 			<div class="intro-heading">Capture the Moments to make it
 				Memorable</div>
-			<a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
+			<a href="#portfolio" class="page-scroll btn btn-xl">Tell Me More</a>
 		</div>
 		
 		
@@ -278,11 +282,15 @@ color:blue
 	</div>
 	</header>
 
-		
-<div>
+
+	<div>		
+
+				
+	<c:if test="${pageContext.request.userPrincipal.name != null}">
+
 <ul id="menu">
 		<c:forEach items="${categoryList}" var="category">
-			<li><a href=${category.name}>${category.name}</a>
+			<li><a class="intro-lead-in" href=${category.name}>${category.name}</a>
 				<ul>
 					<c:forEach items="${category.products}" var="product">
 
@@ -294,7 +302,7 @@ color:blue
 		</c:forEach>
 
 	</ul>
-	<hr color="#fff" size="5">
+	</c:if>
 	
 	<div>
 		<c:if test="${!empty selectedProduct.name}">
@@ -317,23 +325,149 @@ color:blue
 					<td align="left" >${selectedProduct.category.name}</td>
 					<td align="left" >${selectedProduct.supplier.name}</td>
 				</tr>
+				<td>
+                      	<img alt="" src="<c:url value="/resources/images/${selectedProduct.id}.png"/>" /> 
+                </td>
+                <br>
+                <td>
+                
+                	<c:if test="${pageContext.request.userPrincipal.name != 'admin'}">
+                 	<a class="btn btn-xl" href="<c:url value='buyproduct/${selectedProduct.name}' />">Buy</a>
+					
+                	<a class="btn btn-xl" href="<c:url value='myCart' />">Open Cart</a>
+									
+					<a class="btn btn-xl" href="<c:url value='addToCart/${selectedProduct.id}' />">Add to Cart</a>
+					
+					</c:if>								
+				</td>
+                
 			</table>
 			
 		</c:if>
 	</div>
-	<%@include file="/WEB-INF/views/FetchProducts.jsp"%>
 	
 </div>	
 
 
-	<!-- Services Section -->
+	
+
+
+	<!-- Portfolio Grid Section -->
+	<section id="portfolio" class="bg-light-gray">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2 class="section-heading">Products</h2>
+				<h3 class="section-subheading text-muted">Our products your
+					choice.</h3>
+			</div>
+		</div>
+		<div class="row">
+			
+			<div class="col-md-4 col-sm-6 portfolio-item">
+				<a href="#portfolioModal1" class="portfolio-link"
+					data-toggle="modal">
+					<div class="portfolio-hover">
+						<div class="portfolio-hover-content">
+							<i class="fa fa-plus fa-3x"></i>
+						</div>
+					</div> <img class="img-responsive" alt=""
+					src="<c:url value="/resources/images/portfolio/roundicons.gif" />"></img>
+
+				</a>
+				<div class="portfolio-caption">
+					<h4>Nikon</h4>
+					<p class="text-muted">Cameras</p>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6 portfolio-item">
+				<a href="#portfolioModal2" class="portfolio-link"
+					data-toggle="modal">
+					<div class="portfolio-hover">
+						<div class="portfolio-hover-content">
+							<i class="fa fa-plus fa-3x"></i>
+						</div>
+					</div> <img class="img-responsive" alt=""
+					src="<c:url value="/resources/images/portfolio/startup-framework.gif" />"></img>
+
+				</a>
+				<div class="portfolio-caption">
+					<h4>Cannon</h4>
+					<p class="text-muted">Cameras</p>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6 portfolio-item">
+				<a href="#portfolioModal3" class="portfolio-link"
+					data-toggle="modal">
+					<div class="portfolio-hover">
+						<div class="portfolio-hover-content">
+							<i class="fa fa-plus fa-3x"></i>
+						</div>
+					</div> <img class="img-responsive" alt=""
+					src="<c:url value="/resources/images/portfolio/treehouse.gif" />"></img>
+				</a>
+				<div class="portfolio-caption">
+					<h4>Sony</h4>
+					<p class="text-muted">Cameras</p>
+				</div>
+			</div>
+			<!--  <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/golden.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Nikon</h4>
+                        <p class="text-muted">Accessories</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/escape.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Cannon</h4>
+                        <p class="text-muted">Accessories</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/dreams.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Sony</h4>
+                        <p class="text-muted">Accessories</p>
+                    </div>
+                </div> -->
+		</div>
+	</div>
+	</section>
+
+
+
+
+
+<!-- Services Section -->
 	<section id="services">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 text-center">
 				<h2 class="section-heading">Services</h2>
-				<h3 class="section-subheading text-muted">Lorem ipsum dolor sit
-					amet consectetur.</h3>
+				<h3 class="section-subheading text-muted"> Your happiness our pleasure.</h3>
 			</div>
 		</div>
 		<div class="row text-center">
@@ -343,33 +477,34 @@ color:blue
 					class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
 				</span>
 				<h4 class="service-heading">E-Commerce</h4>
-				<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-					adipisicing elit. Minima maxime quam architecto quo inventore harum
-					ex magni, dicta impedit.</p>
+				<p class="text-muted">We believe there are no limits to what an image can do. 
+				We are introducing the products with clear vision: To help our customers see impossible.</p>
 			</div>
 			<div class="col-md-4">
 				<span class="fa-stack fa-4x"> <i
 					class="fa fa-circle fa-stack-2x text-primary"></i> <i
 					class="fa fa-laptop fa-stack-1x fa-inverse"></i>
 				</span>
-				<h4 class="service-heading">Responsive Design</h4>
-				<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-					adipisicing elit. Minima maxime quam architecto quo inventore harum
-					ex magni, dicta impedit.</p>
+				<h4 class="service-heading">Service & Support</h4>
+				<p class="text-muted">Whether you are an avid photo hobbyist or a casual photographer, 
+				our Maintenance Service helps you to maintain your camera with regular 
+				cleanings or get it ready for your next important event.</p>
 			</div>
 			<div class="col-md-4">
 				<span class="fa-stack fa-4x"> <i
 					class="fa fa-circle fa-stack-2x text-primary"></i> <i
 					class="fa fa-lock fa-stack-1x fa-inverse"></i>
 				</span>
-				<h4 class="service-heading">Web Security</h4>
-				<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-					adipisicing elit. Minima maxime quam architecto quo inventore harum
-					ex magni, dicta impedit.</p>
+				<h4 class="service-heading">Warranty</h4>
+				<p class="text-muted">Professional Product Warranty Information.</p>
 			</div>
 		</div>
 	</div>
 	</section>
+
+
+
+
 
 
 	<!-- About Section -->
@@ -378,8 +513,7 @@ color:blue
 		<div class="row">
 			<div class="col-lg-12 text-center">
 				<h2 class="section-heading">About</h2>
-				<h3 class="section-subheading text-muted">Lorem ipsum dolor sit
-					amet consectetur.</h3>
+				<h3 class="section-subheading text-muted">Capture World.</h3>
 			</div>
 		</div>
 		<div class="row">
@@ -387,84 +521,40 @@ color:blue
 				<ul class="timeline">
 					<li>
 						<div class="timeline-image">
-							<img class="img-responsive" alt=""
-								src="<c:url value="/resources/img/about/1.jpg" />"></img>
-
+							
 						</div>
 						<div class="timeline-panel">
 							<div class="timeline-heading">
-								<h4>2009-2011</h4>
+								<h4>2016</h4>
 								<h4 class="subheading">Our Humble Beginnings</h4>
 							</div>
 							<div class="timeline-body">
-								<p class="text-muted">Lorem ipsum dolor sit amet,
-									consectetur adipisicing elit. Sunt ut voluptatum eius sapiente,
-									totam reiciendis temporibus qui quibusdam, recusandae sit vero
-									unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+								<p class="text-muted">Opened the Gallery of memories</p>
 							</div>
 						</div>
 					</li>
 					<li class="timeline-inverted">
 						<div class="timeline-image">
-							<img class="img-circle img-responsive" alt=""
-								src="<c:url value="/resources/img/about/2.jpg" />"></img>
-
+							
 						</div>
 						<div class="timeline-panel">
 							<div class="timeline-heading">
-								<h4>March 2011</h4>
-								<h4 class="subheading">An Agency is Born</h4>
+								<h4> </h4>
+								<h4 class="subheading">Located at</h4>
 							</div>
 							<div class="timeline-body">
-								<p class="text-muted">Lorem ipsum dolor sit amet,
-									consectetur adipisicing elit. Sunt ut voluptatum eius sapiente,
-									totam reiciendis temporibus qui quibusdam, recusandae sit vero
-									unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+								<p class="text-muted">NIIT, 3rd Block Jayanagar, Banglore.<br>
+								Contact Number: 9987654321<br>
+								email: lakshmigr222@gmail.com<br>
+								</p>
 							</div>
 						</div>
 					</li>
-					<li>
-						<div class="timeline-image">
-							<img class="img-circle img-responsive" alt=""
-								src="<c:url value="/resources/img/about/3.jpg" />"></img>
 
-
-						</div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h4>December 2012</h4>
-								<h4 class="subheading">Transition to Full Service</h4>
-							</div>
-							<div class="timeline-body">
-								<p class="text-muted">Lorem ipsum dolor sit amet,
-									consectetur adipisicing elit. Sunt ut voluptatum eius sapiente,
-									totam reiciendis temporibus qui quibusdam, recusandae sit vero
-									unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-							</div>
-						</div>
-					</li>
-					<li class="timeline-inverted">
-						<div class="timeline-image">
-							<img class="img-circle img-responsive" alt=""
-								src="<c:url value="/resources/img/about/4.jpg" />"></img>
-						</div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h4>July 2014</h4>
-								<h4 class="subheading">Phase Two Expansion</h4>
-							</div>
-							<div class="timeline-body">
-								<p class="text-muted">Lorem ipsum dolor sit amet,
-									consectetur adipisicing elit. Sunt ut voluptatum eius sapiente,
-									totam reiciendis temporibus qui quibusdam, recusandae sit vero
-									unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-							</div>
-						</div>
-					</li>
 					<li class="timeline-inverted">
 						<div class="timeline-image">
 							<h4>
-								Be Part <br>Of Our <br>Story!
+								Be Part <br>Of Our <br>Gallery!
 							</h4>
 						</div>
 					</li>
@@ -618,32 +708,57 @@ color:blue
 						<div class="col-lg-8 col-lg-offset-2">
 							<div class="modal-body">
 								<!-- Project Details Go Here -->
-								<h2>Nikon cams</h2>
-								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
-									consectetur.</p>
+								<h2>Nikon</h2>
+								<p class="item-intro text-muted">Popular products of Nikon camera.</p>
 								<img class="img-responsive img-centered" alt=""
-									src="<c:url value="/resources/img/portfolio/roundicons-free.png" />"></img>
-
-								<p>Use this area to describe your project. Lorem ipsum dolor
-									sit amet, consectetur adipisicing elit. Est blanditiis dolorem
-									culpa incidunt minus dignissimos deserunt repellat aperiam
-									quasi sunt officia expedita beatae cupiditate, maiores
-									repudiandae, nostrum, reiciendis facere nemo!</p>
+									src="<c:url value="/resources/images/portfolio/n3400.jpg" />"></img>
+							<p class="item-intro text-muted">Nikon N3400</p>
 								<p>
-									<strong>Want these icons in this portfolio item
-										sample?</strong>You can download 60 of them for free, courtesy of <a
-										href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">RoundIcons.com</a>,
-									or you can purchase the 1500 icon set <a
-										href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">here</a>.
+					<li>24.2-megapixel DX-format CMOS image sensor with no optical low-pass filter for breathtaking image quality</li>
+<li>Always connected with Nikon SnapBridge and a compatible smartphone or tablet</li>
+<li>Compact, lightweight and very easy to use, regardless of skill level</li>
+<li>Learn as you go with Nikon's innovative Guide Mode.</li> 
+								
 								</p>
-								<ul class="list-inline">
-									<li>Date: July 2014</li>
-									<li>Client: Round Icons</li>
-									<li>Category: Graphic Design</li>
-								</ul>
+								
+							
+					<br>			
+
+				<img class="img-responsive img-centered" alt=""
+									src="<c:url value="/resources/images/portfolio/nd5.jpg" />"></img>
+<p class="item-intro text-muted">Nikon D5</p>
+								<p>
+								
+<li>Widest native ISO range ever in a Nikon full-frame DSLR: ISO 100 to 102,400 (expandable to Hi-5, ISO 3,280,000)</li>
+<li>Redesigned AF system with a 153 focus points, 99 cross-type sensors and a dedicated processor</li>
+
+<li>12 fps continuous shooting with full AF and AE performance; up to 200 shots in a single burst.</li>
+<li>New 20.8MP FX-format CMOS image sensor and EXPEED 5 image processing</li>
+<li>4K Ultra High Definition (UHD) video recording and pro-grade video features</li> 
+								
+								</p>
+								
+<br>
+
+				<img class="img-responsive img-centered" alt=""
+									src="<c:url value="/resources/images/portfolio/nd500.jpg" />"></img>
+<p class="item-intro text-muted">Nikon D500</p>
+								<p>
+									
+<li>ISO range of 100-51,200 expandable to Lo 1 and Hi 5 (50 – 1,640,000 equivalent).</li>
+<li>Share images instantly with built-in SnapBridge (Wi-Fi® + Bluetooth) capabilities.</li>
+<li>20.9MP DX format CMOS sensor and EXPEED 5 image processor.</li>
+<li>Multi-CAM 20K Autofocus sensor with 153/99 AF points.</li>
+<li>Dual card slots - XQD and SD media.</li> 
+<li>Shoot cinematic 4K UHD video.</li>
+								</p>
+								
+								
+
+							<br>
 								<button type="button" class="btn btn-primary"
 									data-dismiss="modal">
-									<i class="fa fa-times"></i> Buy this Product
+									<i class="fa fa-times"></i> Back
 								</button>
 							</div>
 						</div>
@@ -652,7 +767,9 @@ color:blue
 			</div>
 		</div>
 	</div>
-
+	
+	
+	
 	<!-- Portfolio Modal 2 -->
 	<div class="portfolio-modal modal fade" id="portfolioModal2"
 		tabindex="-1" role="dialog" aria-hidden="true">
@@ -667,29 +784,48 @@ color:blue
 					<div class="row">
 						<div class="col-lg-8 col-lg-offset-2">
 							<div class="modal-body">
-								<h2>Project Heading</h2>
-								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
-									consectetur.</p>
-
+								<!-- Project Details Go Here -->
+								<h2>Cannon Cameras</h2>
+								<p class="item-intro text-muted">Popular products of Cannon</p>
+								
+												<img class="img-responsive img-centered" alt=""
+									src="<c:url value="/resources/images/portfolio/c1300d.jpg" />"></img>
+			<p class="item-intro text-muted">Cannon 1300D</p>
+								<p>
+									<li>Digital, single-lens reflex, AF/AE camera with built-in flash</li>
+<li>Recording media: SD memory card, SDHC memory card, SDXC memory card</li>
+<li>Compatible lenses: Canon EF lenses (including EF-S lenses)</li> 
+<li>Image sensor size: Approx. 22.3 x 14.9mm</li>
+								</p>
+								<br>
 								<img class="img-responsive img-centered" alt=""
-									src="<c:url value="/resources/img/portfolio/startup-framework-preview.png" />"></img>
-								<p>
-									<a href="http://designmodo.com/startup/?u=787">Startup
-										Framework</a> is a website builder for professionals. Startup
-									Framework contains components and complex blocks (PSD+HTML
-									Bootstrap themes and templates) which can easily be integrated
-									into almost any design. All of these components are made in the
-									same style, and can easily be integrated into projects,
-									allowing you to create hundreds of solutions for your future
-									projects.
+									src="<c:url value="/resources/images/portfolio/c750d.jpg" />"></img>
+			<p class="item-intro text-muted">Cannon 750D</p>
+								<p> 
+								
 								</p>
+								<li>Digital, single-lens reflex, AF/AE camera with built-in flash</li>
+<li>Recording Media: SD / SDHC / SDXC memory cards</li>
+<li>Image Sensor Size	Approx. 22.3 x 14.9mm</li>
+<li>Compatible Lenses. Canon EF lenses (including EF-S lenses)</li>
+								
+								
+								<br>
+				<img class="img-responsive img-centered" alt=""
+									src="<c:url value="/resources/images/portfolio/c760d.jpg" />"></img>
+		<p class="item-intro text-muted">Cannon 670D</p>
 								<p>
-									You can preview Startup Framework <a
-										href="http://designmodo.com/startup/?u=787">here</a>.
+									<li>24.2 megapixel CMOS image sensor with high performance DIGIC 6 processor for excellent speed and quality</li>
+<li>Basic Zone modes : ISO 100 - ISO 6400 set automatically</li>
+<li>focusing at f/2.8 with center AF point. (Except with the EF28-80mm f/2.8-4L USM and EF50mm f/2.5 Compact Macro.)</li>
+<li>Wi-fi functions and are NFC supported</li> 
+								
 								</p>
+								
+								
 								<button type="button" class="btn btn-primary"
 									data-dismiss="modal">
-									<i class="fa fa-times"></i> Buy this Product
+									<i class="fa fa-times"></i> Back
 								</button>
 							</div>
 						</div>
@@ -698,7 +834,7 @@ color:blue
 			</div>
 		</div>
 	</div>
-
+	
 	<!-- Portfolio Modal 3 -->
 	<div class="portfolio-modal modal fade" id="portfolioModal3"
 		tabindex="-1" role="dialog" aria-hidden="true">
@@ -714,27 +850,51 @@ color:blue
 						<div class="col-lg-8 col-lg-offset-2">
 							<div class="modal-body">
 								<!-- Project Details Go Here -->
-								<h2>Project Name</h2>
-								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
-									consectetur.</p>
-								<img class="img-responsive img-centered" alt=""
-									src="<c:url value="/resources/img/portfolio/treehouse-preview.png" />"></img>
+								<h2>Sony Cameras</h2>
+								<p class="item-intro text-muted">Showcase of Sony products.</p>
+								
+								
+												<img class="img-responsive img-centered" alt=""
+									src="<c:url value="/resources/images/portfolio/s_rx10.jpg" />"></img>
+			<p class="item-intro text-muted">Sony RX10</p>
+								<p>
+									<li>24-600 mm  ZEISS Vario-Sonnar F2.4-4 large-aperture zoom lens</li>
+<li>20.2 megapixel (1.0-type) stacked CMOS sensor with DRAM chip</li>
+<li>4K movie recording with full pixel readout/ no pixel binning</li>
+<li>960fps (40x) High-speed shooting</li>
+<li>0.09 sec Fast Intelligent AF</li>
+								
+								</p> 
+								
+								
+								
 
+				<img class="img-responsive img-centered" alt=""
+									src="<c:url value="/resources/images/portfolio/s_rx100.jpg" />"></img>
+	<p class="item-intro text-muted">Sony RX100</p>
 								<p>
-									Treehouse is a free PSD web template built by <a
-										href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>.
-									This is bright and spacious design perfect for people or
-									startup companies looking to showcase their apps or other
-									projects.
+								<li>The super-fast anti-distortion shutter of up to 1/32000 seconds allows you to capture extremely fast motion without image distortion caused by rolling shutter</li>
+<li>The super-fast anti-distortion shutter which achieves wide-range shooting coverage up to EV 19 allow you to shoot freely even in extremely bright conditions, even with defocused backgrounds</li>
+<li>Fast intelligent AF and direct drive SSM reaches speeds as fast as 0.09 seconds with accurate contrast detection to help capture momentary shutter opportunities without fail</li>
+				
 								</p>
+							<img class="img-responsive img-centered" alt=""
+									src="<c:url value="/resources/images/portfolio/s_rx1r.jpg" />"></img>
+	<p class="item-intro text-muted">Sony RX1R</p>
 								<p>
-									You can download the PSD template in this portfolio sample item
-									at <a
-										href="http://freebiesxpress.com/gallery/treehouse-free-psd-web-template/">FreebiesXpress.com</a>.
-								</p>
+								<li>24MP full-frame (24x36mm) CMOS sensor (without AA filter)</li>
+<li>35mm F2 lens. ISO 100-25600</li>
+<li>1.23M dot RGBW 'WhiteMagic' LCD</li>
+<li>1080p60 HD movies in AVCHD (50p on PAL region models)</li>
+<li>Bulb mode and threaded cable release socket in shutter button</li>
+	</p>
+								
+								<br>
+								<br>
+								
 								<button type="button" class="btn btn-primary"
 									data-dismiss="modal">
-									<i class="fa fa-times"></i> Buy this Product
+									<i class="fa fa-times"></i> Back
 								</button>
 							</div>
 						</div>
@@ -756,34 +916,45 @@ color:blue
 				</div>
 				<div class="container">
 					<div class="row">
+					
+					
 						<div class="col-lg-8 col-lg-offset-2">
 							<div class="modal-body">
 								<!-- Project Details Go Here -->
-								<h2>Project Name</h2>
+								<h2>Niks</h2>
 								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
 									consectetur.</p>
-								<img class="img-responsive img-centered" alt=""
-									src="<c:url value="/resources/img/portfolio/golden-preview.png" />"></img>
+							
 
-
-								<p>
-									Start Bootstrap's Agency theme is based on Golden, a free PSD
-									website template built by <a
-										href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>.
-									Golden is a modern and clean one page web template that was
-									made exclusively for Best PSD Freebies. This template has a
-									great portfolio, timeline, and meet your team sections that can
-									be easily modified to fit your needs.
+	
+							
+							
+				<img class="img-responsive img-centered" alt=""
+									src="<c:url value="/resources/images/team/1.jpg" />"></img>
+								
+									You can download the PSD template in this portfolio sample item
+									at <a class="btn btn-primary"
+										href="buyproduct">FreebiesXpress.com</a>.
 								</p>
-								<p>
+								<button  class="btn btn-primary"
+									data-dismiss="modal" href="buyproduct">
+									Close Project
+								</button>
+								
+								
+								<img class="img-responsive img-centered" alt=""
+									src="<c:url value="/resources/images/team/2.jpg" />"></img>
+								
 									You can download the PSD template in this portfolio sample item
 									at <a
-										href="http://freebiesxpress.com/gallery/golden-free-one-page-web-template/">FreebiesXpress.com</a>.
+										href="buyproduct">Buy here</a>.
 								</p>
-								<button type="button" class="btn btn-primary"
-									data-dismiss="modal">
-									<i class="fa fa-times"></i> Close Project
+								<button type="button" class="btn btn-xl">
+									<i href="buyproduct"></i> Close this Project
 								</button>
+				
+								
+								
 							</div>
 						</div>
 					</div>

@@ -1,9 +1,13 @@
 package com.niit.shoppingcart;
 
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -72,33 +76,82 @@ public class CartController {
 		return "redirect:/myCart";
 	}
 	
+	@RequestMapping("/cart/remove/{id}")
+    public String removeCart(@PathVariable("id") Integer id,ModelMap model) throws Exception{
+		
+       System.out.println("cart delete function");
+		cartDAO.delete(id);
+		
+        return "redirect:/myCart";
+    }
 	
- 
-	
-	
-	@RequestMapping("myCart/remove/{id}")
-	public String removeProduct(@PathVariable("id") String id, ModelMap model) throws Exception {
-
-		try {
-			cartDAO.delete(id);
-			model.addAttribute("message", "Successfully Removed");
-		} catch (Exception e) {
-			model.addAttribute("message", e.getMessage());
-			e.printStackTrace();
-		}
-		// redirectAttrs.addFlashAttribute(arg0, arg1)
-		return "redirect:/myCart";
-	}
 
 	
-	
-	
-	
-    @RequestMapping("myCart/edit/{id}")
-    public String editCart(@PathVariable("id") String id, Model model){
+    @RequestMapping("cart/edit/{id}")
+    public String editCart(@PathVariable("id") int id, Model model){
     	System.out.println("editCart");
         model.addAttribute("cart", this.cartDAO.get(id));
         model.addAttribute("listCarts", this.cartDAO.list());
         return "Cart";
     }
+    
+    @RequestMapping("/buyproduct/{name}")
+	public String myCart1(Model model, @PathVariable("name") String name) {
+		
+		Product product =productDAO.getByName(name);
+		model.addAttribute("product", product);
+		//model.addAttribute("categoryList", categoryDAO.list());
+	
+		//model.addAttribute("cart", new Cart());
+		//model.addAttribute("cartList", this.cartDAO.list());
+		model.addAttribute("sum", product.getPrice()); // Just to test, passwrdo user
+		//model.addAttribute("displayCart", "true");
+		return "BuyProduct";
 	}
+	
+    
+
+    @RequestMapping("/buyproduct")
+    public String cont1()
+    {
+	
+    	return "BuyProduct";
+    }
+    
+    
+    @RequestMapping("/Thankyou")
+	public String loadLoginPage4() {
+		return "Thank3";
+	}
+	
+    
+    @RequestMapping("/Tk")
+	public String loadLoginPage5() {
+		return "Thanks2";
+	}
+    
+
+/*    @RequestMapping(value = "/checkout", method = RequestMethod.GET)
+	public String checkout(Model model) {
+	    
+		int i,s=0,j=0;
+		int n=cartDAO.list().size();
+		System.out.println(n);
+		for(i=0;i<n;i++)
+		{
+			s=(int) (s+cartDAO.list().get(i).getPrice());
+			
+		}
+		System.out.println(s);
+		model.addAttribute("sum", s);
+		model.addAttribute("cart", new Category());
+		model.addAttribute("cartList", this.cartDAO.list());
+		model.addAttribute("total", this.cartDAO.getTotalAmount("id"));
+		
+	
+		
+		//System.out.println(U);
+		return "/checkout";
+	}*/
+    
+}

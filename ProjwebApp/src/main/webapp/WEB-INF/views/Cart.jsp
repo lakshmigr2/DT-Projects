@@ -1,15 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@include file="/WEB-INF/views/Headers.jsp"%>
 
 
-
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page session="false"%>
 <html>
 <head>
 
@@ -50,13 +46,62 @@
 .tg .tg-4eph {
 	background-color: #f9f9f9
 }
-</style>
+/* table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
 
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+} */
+</style>
+<title>Cart</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <style>
+    
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 10px;
+      border-width:   5px;
+      border-color: #cdae88;
+      background-color: ;
+      font-style: normal;
+     	font-weight: 10;
+      
+      
+    }
+    
+   
+     .jumbotron {
+      margin-bottom: 20px;
+    }
+   
+   
+ .footer.transparent.footer-inverse .footer {
+    border-width: 0px;
+    -webkit-box-shadow: 0px 0px;
+    box-shadow: 0px 0px;
+    background-color: rgba(0,0,0,0.0);
+    background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(0,0,0,0.00)),color-stop( 100% , rgba(0,0,0,0.00)));
+    background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+    background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+}
+    
+  </style>
+
+<title>Cart</title>
 </head>
 
-<body>
-
-	<h3>ITEMS IN CART</h3>
+ 
+ 	<h3>ITEMS IN CART</h3>
  
 	
 		<table class="tg">
@@ -68,6 +113,7 @@
 			    <th width="120">User ID</th>
 			     
 			     <th width="120">Remove from Cart</th>
+			      <th width="120">Buy</th>
 			
 			</tr>
 			<c:forEach items="${cartList}" var="cart">
@@ -78,17 +124,20 @@
 					<td>${cart.productName}</td>
 					<td>${cart.userID }</td>
 					
-					<td><a href="<c:url value='myCart/remove/${cart.id}' />">Delete</a></td>
+					<td><a href="<c:url value='cart/remove/${cart.id}' />">Delete</a></td>
+					 <td><a href="<c:url value='buyproduct/${cart.productName}' />">Buy</a></td> 
 					
-					</tr>
+ 
+					 
+				</tr>
 			</c:forEach>
 		</table>
 	
-
-<div class="row"><div class="container-fluid"> <br></div></div>
-<div class="row"><div class="container-fluid"> <br></div></div>
 </body>
 </html>
 
 
+
 <%@include file="/WEB-INF/views/Footers.jsp"%>
+
+  

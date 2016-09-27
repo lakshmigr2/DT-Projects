@@ -70,7 +70,7 @@ body {
 </ul>
 </div>
 
-	<h4>Add a Supplier</h4>
+	<h2>Add a Supplier</h2>
 
 	<c:url var="addAction" value="/manageSupplier/add"></c:url>
 
@@ -105,10 +105,10 @@ body {
 			</tr>
 			<tr>
 				<td colspan="2"><c:if test="${!empty supplier.name}">
-						<input type="submit"
+						<input type="submit" class="btn btn-xl"
 							value="<spring:message text="Edit Supplier"/>" />
 					</c:if> <c:if test="${empty supplier.name}">
-						<input type="submit" value="<spring:message text="Add Supplier"/>" />
+						<input class="btn btn-xl" type="submit" value="<spring:message text="Add Supplier"/>" />
 					</c:if></td>
 			</tr>
 		</table>

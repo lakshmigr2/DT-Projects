@@ -104,7 +104,7 @@
 
 
 
-	<h1>Add a Product</h1>
+	<h2>Add a Product</h2>
 
 	<%--  <form method="POST" action="uploadFile" enctype="multipart/form-data">
 		<table>
@@ -189,9 +189,9 @@
 			</tr>
 			<tr>
 				<td colspan="2"><c:if test="${!empty product.name}">
-						<input type="submit" value="<spring:message text="Edit Product"/>" />
+						<input class="btn btn-xl" type="submit" value="<spring:message text="Edit Product"/>" />
 					</c:if> <c:if test="${empty product.name}">
-						<input type="submit" value="<spring:message text="Add Product"/>" />
+						<input class="btn btn-xl" type="submit" value="<spring:message text="Add Product"/>" />
 					</c:if></td>
 			</tr>
 		</table>

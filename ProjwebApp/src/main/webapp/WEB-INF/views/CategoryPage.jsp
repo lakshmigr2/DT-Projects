@@ -111,7 +111,7 @@
 
 
 
-	<h1>Add a Category</h1>
+	<h2>Add a Category</h2>
 
 	<c:url var="addAction" value="/manageCategory/add"></c:url>
 
@@ -157,13 +157,13 @@
 			</tr>
 			<tr>
 				<td colspan="2"><c:if test="${!empty category.name}">
-						<input type="submit"
+						<input class="btn btn-xl" type="submit"
 							value="<spring:message text="Edit Category"/>" />
 					</c:if> <c:if test="${empty category.name}">
 					
 					<div class="clearfix"></div>
 					<div class="col-lg-12 text-center">
-						<li><button type="submit" class="btn btn-xl" value="<spring:message text="Add Category"/>">Add Category</button></li>
+						<button type="submit" class="btn btn-xl" value="<spring:message text="Add Category"/>">Add Category</button>
 					</div>
 						
 					</c:if></td>

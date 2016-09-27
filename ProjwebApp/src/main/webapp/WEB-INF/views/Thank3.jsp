@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-Thank you for shopping with us!!!!
+Thankyou for shopping with us!!!!!!
 </body>
 </html>

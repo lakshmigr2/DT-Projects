@@ -7,47 +7,77 @@
 </head>
 <body>
 	<div class="span7 popular_products">
-
+		
 		<br>
 		<div>
 
 			<ul class="thumbnails">
+	
 				<c:forEach items="${productList}" var="product">
 					<%-- <c:if
 						test="${searchCondition != null && searchCondition == product.category_id}"> --%>
-					<li class="span2">
-						<div class="thumbnail">
-							<a href="<c:url value="/product/get/${product.id}" />"> <img
-								alt="" src="<c:url value="/resources/img/${product.id}.png" /> ">
-								<!-- 	<div class="caption"> --> ${product.getName()} Price:
-								${product.getPrice()}
-
+						<li class="span2">
+							<div class="thumbnail">
+								<a
+									href="<spring:url value="/product/get/${product.id}" />">
+									<img alt=""
+									src="<c:url value="/resources/images/${product.id}.png" /> ">
+								<!-- 	<div class="caption"> -->
+								
+								${product.getName()}
+										Price: ${product.getPrice()}
+										<br>
+										<c:if test="${pageContext.request.userPrincipal.name != 'admin'}">
+										<a class="btn btn-xl" href="buyproduct/${product.getName()}">Buy</a>
+										
+								<br>
+								
+								<a  class="btn btn-xl" href="<c:url value='myCart' />">Open Cart
 							</a>
-							<br> 
+							<br>
 							
-							<a class="btn btn-xl"
-								href="<c:url value='addToCart/${product.id}' />">Add to Cart
+				
+										
+							<a  class="btn btn-xl" href="<c:url value='addToCart/${product.id}' />">Add to Cart
 							</a>
-							<button class="btn btn-xl">Buy</button>
-							</a>
+							</c:if>
+									
+						<br>
 						
-							<a class="btn btn-xl" href="<c:url value='myCart' />">Open Cart </a>
 						
-							<br> <br>
-						</div>
-					</li>
-				</c:forEach>
+			
+								</a><br>
+								<br>
+							</div>
+							</li>
+				<%-- 	</c:if>
+		
+		
+		<c:if test="${searchCondition == null }">
+			<li class="span2">
+				<div class="thumbnail">
+					<a	href="<spring:url value="/product/get/${product.id}" />">
+						<img alt=""
+						src="<c:url value="/resources/images/${product.id}.png" /> ">
+					<!-- 	<div class="caption"> -->
+							${product.getName()}
+							Price: Rs. ${product.getPrice()}
+						<!-- </div> -->
+					</a><br>
+					<br>
+				</div>
+			</li>
+	</c:if>
+	
+ --%>	</c:forEach>
 
 
-			</ul>
+	</ul>
 
 
-		</div>
 	</div>
-
-
-
-
+	</div>
+		
 
 
 </body>

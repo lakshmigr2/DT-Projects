@@ -21,7 +21,7 @@
 	<div class="row">
 			<div class="col-lg-12 text-center">
 				<h2 class="section-heading">LOgin</h2>
-				<h3 class="section-subheading text-muted">Be a member to get updates.</h3>
+				<h3 class="section-subheading text-muted">Login to buy products.</h3>
 			</div>
 		</div>
 	
