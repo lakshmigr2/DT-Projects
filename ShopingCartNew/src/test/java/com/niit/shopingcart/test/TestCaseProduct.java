@@ -62,7 +62,7 @@ public class TestCaseProduct {
 	@Test
 	public void listProductTestCase()
 	{
-		assertEquals("addProductTestCase",productDAO.list().size(), 0);
+		assertEquals("addProductTestCase",productDAO.list().size(), 3);
 	}
 	@Test
 	public void getProductTestCase()

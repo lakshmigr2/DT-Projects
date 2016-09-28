@@ -18,5 +18,7 @@ public interface SupplierDAO {
 
 	public String delete(Supplier supplier);
 
+	public String delete(String id);
+
 
 }

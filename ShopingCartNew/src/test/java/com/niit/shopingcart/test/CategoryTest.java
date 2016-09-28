@@ -18,13 +18,15 @@ public class CategoryTest {
 		context.scan("com.niit.shopingcart");
 		context.refresh();
 		
-	Category c =(Category)	  context.getBean("category");
+	Category c =(Category)context.getBean("category");
 	
 	CategoryDAO categoryDAO = (CategoryDAO)  context.getBean("categoryDAO");
 	c.setId("CAT_001");
 	c.setName("Mobile_Samsung");
 	c.setDescription("Samsung S5");
 	categoryDAO.saveOrUpdate(c);
+    
+	
 	c.setId("CAT_002");
 	c.setName("Mobile_Apple");
 	c.setDescription("iPhone");

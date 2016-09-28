@@ -19,5 +19,7 @@ public interface CategoryDAO {
 
 	public void add(Category category);
 
+	public void delete(String id);
+
 
 }
