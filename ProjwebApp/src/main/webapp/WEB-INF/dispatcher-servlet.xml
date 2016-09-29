@@ -73,7 +73,15 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd?
 
     <security:http auto-config="true">
         <security:intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
+        <security:intercept-url pattern="/manageProduct/**" access="ROLE_ADMIN" />
+        <security:intercept-url pattern="/manageCategory/**" access="ROLE_ADMIN" />
+        <security:intercept-url pattern="/manageSupplier/**" access="ROLE_ADMIN" />
+        
         <security:intercept-url pattern="/user/**" access="ROLE_USER" />
+        <security:intercept-url pattern="/myCart/**" access="ROLE_USER" />
+        <security:intercept-url pattern="/buyproduct/**" access="ROLE_USER" />
+        
+        
         
         <security:form-login
             login-page="/login"

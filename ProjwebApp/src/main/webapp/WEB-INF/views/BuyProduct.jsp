@@ -138,9 +138,12 @@
 			
 			
 		
-		<tr>		<td>${product.id}</td>
+			<tr>		
+				<td>${product.id}</td>
 				<td>${product.name}</td>
 				<td>${product.price}</td>
+				<td><img src="<c:url value="/resources/images/${product.id}.png" /> " alt="image"/>​ </td>
+ 
 			</tr>
 		</table>
 		  <h4 style="color:#fed136;"><strong>Grand Total(in Rs.) </strong></h4>
@@ -155,10 +158,6 @@
 	<a href="<c:url value="/Shipping"/>"><h4>PAY NOW AND ENTER SHIPPING DETAILS.
 	</h4></a>
 	
-	<h5><ul>
-	<a href="<c:url value="/Thankyou"/>"><li> CREDIT CARD</li></a>
-	<a href="<c:url value="/Thankyou"/>"><li>DEBIT CARD</li></a>
-	<a href="<c:url value="/Thankyou"/>"><li> CASH ON DELIVERY</li></a>
 	
 	<br>
 	

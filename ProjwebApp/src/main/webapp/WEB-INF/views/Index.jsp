@@ -69,7 +69,7 @@ color:blue
 	margin: 0;
 	padding: 10px 0 0 0;
 	list-style: none;
-	background-color: #fed136;
+	background-color: #00fed136;
 	background-image: linear-gradient(#00000444, #00000111);
 	border-radius: 50px;
 	box-shadow: 0 2px 1px #009c9c9c;
@@ -270,22 +270,9 @@ color:blue
 	<div class="container">
 		<div class="intro-text">
 
-			<div class="intro-lead-in">Welcome To Our Studio!</div>
-			<div class="intro-heading">Capture the Moments to make it
-				Memorable</div>
-			<a href="#portfolio" class="page-scroll btn btn-xl">Tell Me More</a>
-		</div>
-		
-		
-	
-		
-	</div>
-	</header>
 
 
-	<div>		
-
-				
+<div>						
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
 
 <ul id="menu">
@@ -347,6 +334,23 @@ color:blue
 	</div>
 	
 </div>	
+
+<br>
+<br>
+
+			<div class="intro-lead-in">Welcome To Our Studio!</div>
+			<div class="intro-heading">Capture the Moments to make it
+				Memorable</div>
+			<a href="#portfolio" class="page-scroll btn btn-xl">Tell Me More</a>
+		</div>
+		
+		
+	
+		
+	</div>
+	</header>
+
+
 
 
 	

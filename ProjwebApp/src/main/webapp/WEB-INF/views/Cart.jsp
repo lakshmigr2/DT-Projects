@@ -126,8 +126,7 @@ tr:nth-child(even) {
 					
 					<td><a href="<c:url value='cart/remove/${cart.id}' />">Delete</a></td>
 					 <td><a href="<c:url value='buyproduct/${cart.productName}' />">Buy</a></td> 
-					
- 
+					<%-- <td><img src="<c:url value="/resources/images/${product.id}.png" /> " alt="image"/>​ </td> --%>
 					 
 				</tr>
 			</c:forEach>

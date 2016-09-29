@@ -88,31 +88,31 @@
 							<div class="form-group">
 								<form:input type="fullname" class="form-control"
 									path="userFullName" placeholder="Your Full Name *"
-									id="fullname" />
+									id="fullname" required="required" />
 								<p class="help-block text-danger"></p>
 							</div>
 							
 							<div class="form-group">
 								<form:input type="email" class="form-control" path="userEmail"
 									placeholder="Your Email *" id="email" />
-								<p class="help-block text-danger"></p>
+								<p class="help-block text-danger" required="required" ></p>
 							</div>
 							
 							<div class="form-group">
 								<form:input type="tel" class="form-control" path="userPhone"
 									placeholder="Your Phone" id="phone" />
-								<p class="help-block text-danger"></p>
+								<p class="help-block text-danger" required="required" ></p>
 							</div>
 
 							<div class="form-group">
 								<form:input type="username" class="form-control" path="username"
-									placeholder="user name" id="username" />
+									placeholder="user name" id="username" required="required" />
 								<p class="help-block text-danger"></p>
 							</div>
 
 							<div class="form-group">
 								<form:input type="password" class="form-control" path="password"
-									placeholder="Your Password" id="password" />
+									placeholder="Your Password" id="password" required="required"/>
 								<p class="help-block text-danger"></p>
 							</div>
 
