@@ -1,6 +1,6 @@
 # DT-Projects
 
-Name:Shopping Cart Front End
+Name:Shopping Cart Front End and BackEnd.
 Discription: This is a E commerse project. admin can handle products, categories and suppliers.
 User can buy the products and can add the product to cart. Pages are designed using Bootstrap and css.
 Setup: Eclipse, h2 database, hibernate, apache tomcat.
