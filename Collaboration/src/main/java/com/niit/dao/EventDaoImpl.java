@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.niit.model.Event;
 import java.util.List;
 
@@ -47,9 +48,10 @@ public class EventDaoImpl implements EventDao {
 		return (Event) session.get(Event.class, eventId);
 	}
 
-	public boolean delete(Event event) {
+	public boolean delete(String eventId) {
 		// TODO Auto-generated method stub
 		try {
+			Event event = getEventById(eventId);
 			Session session = sessionFactory.openSession();
 			session.delete(event);
 			session.flush();

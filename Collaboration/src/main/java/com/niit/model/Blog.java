@@ -32,8 +32,8 @@ public class Blog {
 			return usersID;
 		}
 
-		public void setUsersID(int usersID) {
-			this.usersID = usersID;
+		public void setUsersID(int userId) {
+			this.usersID = userId;
 		}
 
 		public String getCategory() {

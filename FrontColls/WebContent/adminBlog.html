@@ -1,13 +1,13 @@
 <section id="feature" class="transparent-bg">
         
 			<div class="container">
- <div class="row">
+			
+	<div class="row">
  <div class="box">
                 <div class="col-lg-12">
- 
- 
+ 			
+			
     <hr>
-    <button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#myModal">Add New Blog</button>
     <h2>All Blogs</h2>
     <span class="clearfix"></span>
     </hr>
@@ -16,32 +16,33 @@
     <table class="table table-striped">
     <thead>
       <tr>
-      <th>blog id</th>
-        <th>Title</th>
-        <th>Content</th>
-        <th>Date</th>
-         <th>PostedBy</th>
-          <th>category</th>
-          <th>Edit</th>
-          <th>Delete</th>
+    <th>blogId</th>
+        <th>title</th>
+        <th>usersID</th>
+         <th>dateOfCreation</th>
+          <th>content</th>
+           <th>category</th>
+          <th>Approve</th>
+          <th>disapprove</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="blog in blogs">
-      <td>{{blog.blogId}}</td>
+       <td>{{blog.blogId}}</td>
         <td>{{blog.title}}</td>
-        <td>{{blog.content}}</td>
-        <td>{{blog.dateOfCreation}}</td>
         <td>{{blog.usersID}}</td>
+        <td>{{blog.dateOfCreation}}</td>
+        <td>{{blog.content}}</td>
          <td>{{blog.category}}</td>
-        <td><button type="button" class="btn btn-primary btn-sm "  data-toggle="modal" data-target="#editblog" ng-click="editBlog(blog)">Edit</button></td>
-         <td><button type="button" class="btn btn-danger btn-sm " data-toggle="modal" data-target="#deleteblog" ng-click="editBlog(blog)">Delete</button></td>
+        <td><button type="button" class="btn btn-primary btn-sm "  data-toggle="modal" data-target="#editblog" ng-click="editBlog(blog)">Approve</button></td>
+         <td><button type="button" class="btn btn-danger btn-sm " data-toggle="modal" data-target="#deleteblog" ng-click="editBlog(blog)">Disapprove</button></td>
       </tr>
        </tbody>
   </table>
-  </div>
-  </div>
-  </div>
+  
+ </div>
+ </div>
+ </div> 
   
   
   
@@ -56,39 +57,17 @@
           <h4 class="modal-title">Add New Blog</h4>
         </div>
         <div class="modal-body">
+        
+        
          <form class="form-horizontal">
-         
-               <div class="form-group">
-    <label class="control-label col-sm-2" for="blogId">Id:</label>
-    <div class="col-sm-10">
-    
-    <input type="text" class="form-control" id="blogId" placeholder="blogId" required="" autofocus=""  ng-model="blogId"/>
-    </div>
-  </div>
-         
-     
-         
-         
-         
-         
-         
-   <div class="form-group">
-    <label class="control-label col-sm-2" for="blogTitle">Title:</label>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="title">Title:</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="title" placeholder="Enter Title" ng-model="title">
     </div>
   </div>
-  
-  
-   <div class="form-group">
-    <label class="control-label col-sm-2" for="blogTitle">dateOfCreation:</label>
-    <div class="col-sm-10">
-               <input type="date" class="form-control" id="dateOfCreation" placeholder="dateOfCreation" required="" autofocus=""  ng-model="dateOfCreation"/>
-    </div>
-  </div>
-  
   <div class="form-group">
-    <label class="control-label col-sm-2" for="blogDescription">Content:</label>
+    <label class="control-label col-sm-2" for="content">Description:</label>
     <div class="col-sm-10"> 
       <textarea class="form-control" id="content" placeholder="Enter Description" ng-model="content"></textarea>
     </div>
@@ -99,7 +78,14 @@
       <input type="text" class="form-control" id="category" placeholder="Enter category" ng-model="category">
     </div>
   </div>
- 
+  
+  
+   <div class="form-group">
+    <label class="control-label col-sm-2" for="dateOfCreation">dateOfCreation </label>
+    <div class="col-sm-10"> 
+    <input type="datetime-local" class="form-control" name="dateOfCreation" placeholder="dateOfCreation" required="" autofocus=""  ng-model="dateOfCreation"/>
+   </div>
+  </div>
   
   <div class="form-group"> 
     <div class="col-sm-offset-2 col-sm-10">
@@ -128,9 +114,9 @@
         <div class="modal-body">
          <form class="form-horizontal">
          <div class="form-group">
-    <label class="control-label col-sm-2" for="blog_id">Blog_Id</label>
+    <label class="control-label col-sm-2" for="blogId">Blog_Id</label>
     <div class="col-sm-10"> 
-      <input type="text" class="form-control" id="blog_id" ng-model="blogDataToEdit.blogId">
+      <input type="text" class="form-control" id="blogId" ng-model="blogDataToEdit.blogId">
     </div>
   </div>
   <div class="form-group">
@@ -139,19 +125,8 @@
       <input type="text" class="form-control" id="title" ng-model="blogDataToEdit.title">
     </div>
   </div>
-  
-  
-   <div class="form-group">
-    <label class="control-label col-sm-2" for="blogTitle">dateOfCreation:</label>
-    <div class="col-sm-10">
-               <input type="date" class="form-control" id="dateOfCreation" placeholder="dateOfCreation" required="" autofocus=""  ng-model="blogDataToEdit.dateOfCreation"/>
-    </div>
-  </div>
-  
-  
-  
   <div class="form-group">
-    <label class="control-label col-sm-2" for="content">content:</label>
+    <label class="control-label col-sm-2" for="content">Description:</label>
     <div class="col-sm-10"> 
       <textarea class="form-control" id="content" ng-model="blogDataToEdit.content"></textarea>
     </div>

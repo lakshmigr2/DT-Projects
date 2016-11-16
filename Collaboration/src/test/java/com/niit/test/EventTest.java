@@ -1,4 +1,4 @@
-package com.niit.test;
+/*package com.niit.test;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -52,12 +52,12 @@ public class EventTest {
 		event.setVenue("venue");
 		eventDAO.saveOrUpdateEvent(event);
 		
-		/*event = eventDAO.getEventById("EVENT_001");
+		event = eventDAO.getEventById("EVENT_001");
 		System.out.println(event.getEventId() + "\t" + event.getDescription() + "\t" + "\t" + event.getEventDate());
-		*/
 		
-		/*boolean flag=eventDAO.delete(event);
-		System.out.println("delete  "+flag);*/
+		
+		boolean flag=eventDAO.delete(event);
+		System.out.println("delete  "+flag);
 		context.close();
 	}
-}
+}*/

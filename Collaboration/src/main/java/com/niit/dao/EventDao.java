@@ -3,7 +3,6 @@ package com.niit.dao;
 import java.util.List;
 
 import com.niit.model.Event;
-import com.niit.model.UsersDetail;
 
 public interface EventDao {
 
@@ -13,5 +12,5 @@ public interface EventDao {
 
 	public List<Event> getAllEvents();
 
-	public boolean delete(Event event);
+	public boolean delete(String eventId);
 }

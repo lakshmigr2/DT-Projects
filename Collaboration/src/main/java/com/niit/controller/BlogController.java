@@ -23,6 +23,7 @@ public class BlogController {
 	{
 		int userId=(Integer) session.getAttribute("loggedInUserId");
 		blog.setUsersID(userId);
+		
 		System.out.println("user id inside blog is "+userId);
 		
 		blogDao.saveOrUpdateBlog(blog);

@@ -21,14 +21,14 @@ public class UserTest {
 	
 		
 		//usersDetail.setUserId("USER_001");
-		/*usersDetail.setUsername("Admin Bhuvana");
-		usersDetail.setUserFullName("bhuvana");
-		usersDetail.setUserEmail("bhuvana@gmail.com");
+		usersDetail.setUsername("Admin vijay");
+		usersDetail.setUserFullName("vijay");
+		usersDetail.setUserEmail("vijay@gmail.com");
 		usersDetail.setUserPhone("9325427410");
 		usersDetail.setPassword("123");
 		usersDetail.setRole("ROLE_ADMIN");
 		usersDetail.setEnabled(true);
-		userDetailsDAO.addUser(usersDetail);*/
+		userDetailsDAO.addUser(usersDetail);
 		
 		
 		//usersDetail.setUserId("USER_002");
@@ -63,7 +63,7 @@ public class UserTest {
 		usersDetail.setEnabled(true);
 		userDetailsDAO.addUser(usersDetail);
 	*/
-		
+	/*	
 		boolean valid=userDetailsDAO.isValidUser("xxx");
 		System.out.println("Is valid user? == "+ valid);
 		
@@ -72,6 +72,6 @@ public class UserTest {
 		for (UsersDetail u : list) {
 			System.out.println(u.getUserId() + "\t" + u.getUsername() + "\t"+ "\t" + u.getUserPhone());
 		}
-		context.close();
+*/		context.close();
 	}
 }

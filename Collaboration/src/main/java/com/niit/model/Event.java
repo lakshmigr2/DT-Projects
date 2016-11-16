@@ -20,35 +20,16 @@ public class Event {
 	public String eventId;
 	public String title;
 	public String description;
-	public String usersID;
+	public int usersID;
 	public Date eventDate;
 	public String venue;
-	@Transient
-	private String errorCode;
-	@Transient
-	private String errorMessage;
-
-	public String getErrorCode() {
-		return errorCode;
-	}
-
-	public void setErrorCode(String errorCode) {
-		this.errorCode = errorCode;
-	}
-
-	public String getErrorMessage() {
-		return errorMessage;
-	}
-
-	public void setErrorMessage(String errorMessage) {
-		this.errorMessage = errorMessage;
-	}
 	
-	public String getUsersID() {
+	
+	public int getUsersID() {
 		return usersID;
 	}
 
-	public void setUsersID(String usersID) {
+	public void setUsersID(int usersID) {
 		this.usersID = usersID;
 	}
 

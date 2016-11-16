@@ -1,4 +1,4 @@
-package com.niit.test;
+/*package com.niit.test;
 
 import java.util.Date;
 import java.util.List;
@@ -23,48 +23,46 @@ public class ForumTest {
 		Forum forum = (Forum) context.getBean("forum");
 		ForumDao forumDAO = (ForumDao) context.getBean("forumDAO");
 		
-		forum.setQuestionDescription("qqqqq");
-		forum.setQuestionTitle("yyyyyyyyyy");
-		forumDAO.addQuestion(forum);
-		
-		/*("FORUM_001");
+		forum.setForumId("F_003");
+		forum.setContent("AAAA");
+		forum.setTitle("aaaqqq");
+		forum.setUsersID(01);
 		forum.setDateOfCreation(new Date());
-		forum.setDescription("ITI JOB ONLY");
-		forum.setUsersDetail(usersDetail);
-		forum.setUserID(usersDetail.getUserId());
-		forum.setName("job");
-		forum.setTopic("topic");
-		forumDAO.saveOrUpdate(forum);*/
 		
 		
 		
-		/*forum.setForumId("FORUM_002");
+		
+		
+		forum.setForumId("FORUM_001");
+		forum.setContent("bbbb");
+		forum.setTitle("nnnn");
+		forum.setUsersID(02);
 		forum.setDateOfCreation(new Date());
-		forum.setDescription("ITI JOB ONLY");
-		//forum.setUserID(usersDetail.getUserId());
-		forum.setName("job");
-		forum.setTopic("topic");
-		forumDAO.saveOrUpdate(forum);
+		forumDAO.saveOrUpdateForum(forum);
 		
-		forum.setForumId("FORUM_004");
+		
+		
+		forum.setForumId("FORUM_002");
+		
+		forum.setContent("CCCC");
+		forum.setTitle("mmmq");
+		forum.setUsersID(03);
 		forum.setDateOfCreation(new Date());
-		forum.setDescription("ITI JOB ONLY");
-		//forum.setUserID(usersDetail.getUserId());
-		forum.setName("job");
-		forum.setTopic("topic");
-		forumDAO.saveOrUpdate(forum);
+		forumDAO.saveOrUpdateForum(forum);
+		
+
 		
 		List<Forum> list = forumDAO.list();
 
 		for (Forum u : list) {
-			System.out.println(u.getForumId() + "\t" + u.getName() + "\t" + u.getTopic()+"\t" + u.getDescription()+"\t" + u.getDateOfCreation());
-		}*/
+			System.out.println(u.getForumId() + "\t" + u.getTitle() + "\t" + u.getContent()+"\t" + u.getDateOfCreation());
+		}
 		
 		
-		/*Forum u=forumDAO.get("FORUM_001");
-		System.out.println(u.getForumId() + "\t" + u.getName() + "\t" + u.getTopic()+"\t" + u.getDescription()+"\t" + u.getUserID()+"\t" + u.getDateOfCreation());
+		Forum u=forumDAO.get("FORUM_001");
+		System.out.println(u.getForumId() + "\t" + u.getTitle() + "\t" + u.getContent()+"\t" + u.getDateOfCreation());
 		
 		boolean flag=forumDAO.delete("FORUM_001");
-		System.out.println("delete  "+flag);*/
+		System.out.println("delete  "+flag);
 	}
-}
+}*/
