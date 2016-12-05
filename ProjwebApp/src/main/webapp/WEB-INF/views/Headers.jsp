@@ -7,7 +7,8 @@
 </head>
 <body>
 
-<nav id="mainNav">
+	<nav id="mainNav"
+		class="navbar navbar-default navbar-custom navbar-fixed-top">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header page-scroll">
@@ -16,7 +17,7 @@
 				<span class="sr-only">Toggle navigation</span> Menu <i
 					class="fa fa-bars"></i>
 			</button>
-			<a class="navbar-brand page-scroll" href="index">Capture
+			<a class="navbar-brand page-scroll" href="#page-top">Capture
 				World</a>
 		</div>
 
@@ -24,16 +25,33 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li class="hidden"><a href="index"></a></li>
-				
-				
-				<li><a href="register">Register</a></li>
-				<li><a href="loginPage">login</a></li>
-</ul>
-</div>
-</div>
-</nav>
+				<li class="hidden"><a href="#page-top"></a></li>
 
+
+
+
+				<c:if test="${pageContext.request.userPrincipal.name != null}">
+					<c:if test="${pageContext.request.userPrincipal.name != 'admin'}">
+						<a href="<c:url value="/myCart" />">Cart</a>
+					</c:if>
+					<c:if test="${pageContext.request.userPrincipal.name  == 'admin'}">
+						<a href="<c:url value="/admin" />">View Inventory</a>
+						<%-- <a href="<c:url value="/" />">View Customer</a> --%>
+					</c:if>
+					<a>Hello, ${pageContext.request.userPrincipal.name}</a>
+					<a href="<c:url value="/j_spring_security_logout" />">Sign Out</a>
+				</c:if>
+
+
+			</ul>
+		</div>
+		
+		
+		
+		<!-- /.navbar-collapse -->
+	</div>
+		<!-- /.container-fluid --> 
+	</nav>
 
 	<!-- Bootstrap Core CSS -->
 	<link

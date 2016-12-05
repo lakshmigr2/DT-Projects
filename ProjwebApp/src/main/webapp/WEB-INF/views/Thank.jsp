@@ -6,7 +6,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
-Thank you for shopping with us!!!!
+<body background="resources/images/a.jpg">
+<br>
+<br>
+<br>
+<br>
+
+<font color=#fed136 face="Algerian">
+<h1>Thank you....!</h1>
+<h2>Your camera will <font color="white">capture</font> your <font color="white">smile</font> soon</h2>
+</font>
+
 </body>
 </html>
+
+<!-- 
+Algerian
+Goudy Stout
+Forte
+ -->

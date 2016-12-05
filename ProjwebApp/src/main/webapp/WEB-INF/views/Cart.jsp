@@ -100,8 +100,14 @@ tr:nth-child(even) {
 <title>Cart</title>
 </head>
 
+<body background="resources/images/a.jpg">
+ <br>
+ <br>
+ <br>
  
- 	<h3>ITEMS IN CART</h3>
+ <br>
+ <br>
+ 	<h3><font color=#fed136>ITEMS IN CART</font></h3>
  
 	
 		<table class="tg">

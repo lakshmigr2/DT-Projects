@@ -10,7 +10,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
-Your transaction is cancelled!!!!<a href="<c:url value="index"/>">Continue shopping </a>
+<body background="resources/images/a.jpg">
+<p><font face="Algerian" color=#fed136>
+Your transaction has been cancelled!!!!
+
+<a style='color:white;' href="<c:url value="index"/>">Continue shopping </a>
+</font>
+</p>
 </body>
 </html>

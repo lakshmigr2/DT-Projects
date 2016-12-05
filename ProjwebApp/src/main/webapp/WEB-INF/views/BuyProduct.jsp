@@ -1,15 +1,20 @@
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<%@ page session="false"%>
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 
+
+<title>Buy Products</title>
+
+
+
+<!-- Bootstrap Core CSS -->
 <link
 	href="<c:url value="/resources/vendor/bootstrap/css/bootstrap.min.css"/>"
 	rel="stylesheet">
@@ -36,10 +41,7 @@
 	rel="stylesheet">
 
 
-
-<title>Add Cart</title>
 <style type="text/css">
-
 
 .tg {
 	border-collapse: collapse;
@@ -97,12 +99,11 @@
 </style>
 </head>
 <%-- <%-- <%@include file="Header.jsp" %> --%> 
- <body background = "G:\New folder\camera\a.jpg">
+  
 
-
-<body>
-<nav id="mainNav"
-		class="index">
+<body background="resources/images/a.jpg">
+	<nav id="mainNav"
+		class="navbar navbar-default navbar-custom navbar-fixed-top">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header page-scroll">
@@ -111,16 +112,47 @@
 				<span class="sr-only">Toggle navigation</span> Menu <i
 					class="fa fa-bars"></i>
 			</button>
-			<a class="navbar-brand page-scroll" href="index">Capture
+			<a class="navbar-brand page-scroll" href="#page-top">Capture
 				World</a>
 		</div>
 
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="hidden"><a href="#page-top"></a></li>
+
+
+
+
+				<c:if test="${pageContext.request.userPrincipal.name != null}">
+					<c:if test="${pageContext.request.userPrincipal.name != 'admin'}">
+						<a href="<c:url value="/myCart" />">Cart</a>
+					</c:if>
+					<c:if test="${pageContext.request.userPrincipal.name  == 'admin'}">
+						<a href="<c:url value="/admin" />">View Inventory</a>
+						<%-- <a href="<c:url value="/" />">View Customer</a> --%>
+					</c:if>
+					<a>Hello, ${pageContext.request.userPrincipal.name}</a>
+					<a href="<c:url value="/j_spring_security_logout" />">Sign Out</a>
+				</c:if>
+
+
+			</ul>
+		</div>
+		
+		
 		
 		<!-- /.navbar-collapse -->
 	</div>
 		<!-- /.container-fluid --> 
-</nav>
+	</nav>
+  <br>
+ <br>
+ <br>
  
+ <br>
+ <br>
 
 	<br>
 	<h3 style="color:#fed136;">Your order</h3>
@@ -142,7 +174,7 @@
 				<td>${product.id}</td>
 				<td>${product.name}</td>
 				<td>${product.price}</td>
-				<td><img src="<c:url value="/resources/images/${product.id}.png" /> " alt="image"/>​ </td>
+				<%-- <td><img src="<c:url value="/resources/images/${product.id}.png" /> " alt="image"/>​ </td> --%>
  
 			</tr>
 		</table>
@@ -162,7 +194,7 @@
 	<br>
 	
 	
-	<a href="<c:url value="/Tk"/>"><li> CANCEL TRANSACTION</li></a>
+	<a href="<c:url value="/Tk"/>"><li> <h4>CANCEL TRANSACTION</h4></li></a>
 	</ul>
 	</h3>
 	<div>
@@ -176,7 +208,7 @@
  
  
  
- <script src="<c:url value="/resources/js/jquery-latest.min.js"/>">
+<script src="<c:url value="/resources/js/jquery-latest.min.js"/>">
 		
 	</script>
 
@@ -199,7 +231,7 @@
 
 	<!-- Theme JavaScript -->
 	<script src="<c:url value="/resources/js/agency.min.js"/>"></script>
- 
+
  
 
 </body>
